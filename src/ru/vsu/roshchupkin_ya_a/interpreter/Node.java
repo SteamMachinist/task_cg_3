@@ -4,7 +4,7 @@ import ru.vsu.roshchupkin_ya_a.interpreter.operation.BinaryOperationComputer;
 
 import java.util.Map;
 
-public class Node {
+public class Node implements IFunction{
     private NodeType type;
     private Node left;
     private Node right;
@@ -33,20 +33,20 @@ public class Node {
                 return parameters.get(this.value.charAt(0));
             }
             case FUNCTION -> {
+                return 0;
             }
             case CONSTANT -> {
                 switch (this.value) {
-                    case "E" -> {
-                        return Math.E;
-                    }
                     case "Pi" -> {
                         return Math.PI;
+                    }
+                    case "E" -> {
+                        return Math.E;
                     }
                     default -> throw new Exception("Unknown constant");
                 }
             }
             default -> throw new Exception("unknown node type");
         }
-        return 0;
     }
 }

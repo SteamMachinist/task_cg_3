@@ -1,9 +1,7 @@
 package ru.vsu.roshchupkin_ya_a.interpreter;
 
-import ru.vsu.roshchupkin_ya_a.base.RealPoint;
-
-import java.util.List;
+import java.util.Map;
 
 public interface IFunction {
-    List<RealPoint> calculatePoints(double leftBorder, double rightBorder, int pointsNumber) throws Exception;
+    double compute(Map<Character, Double> variables, Map<Character, Double> parameters) throws Exception;
 }

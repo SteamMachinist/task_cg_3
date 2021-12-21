@@ -7,12 +7,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class NodeFunction implements IFunction {
-    private Node root;
+public class FunctionPoints implements IFunctionPoints {
+    private IFunction rootFunction;
     private Map<Character, Double> parameters;
 
-    public NodeFunction(Node root, Map<Character, Double> parameters) {
-        this.root = root;
+    public FunctionPoints(IFunction rootFunction, Map<Character, Double> parameters) {
+        this.rootFunction = rootFunction;
         this.parameters = parameters;
     }
 
@@ -25,17 +25,17 @@ public class NodeFunction implements IFunction {
         for (int n = 0; n < pointsNumber; n++) {
             double currentVarValue = leftBorder + n * varStep;
             variables.put('x', currentVarValue);
-            functionPoints.add(new RealPoint(currentVarValue, root.compute(variables, parameters)));
+            functionPoints.add(new RealPoint(currentVarValue, rootFunction.compute(variables, parameters)));
         }
         return functionPoints;
     }
 
-    public Node getRoot() {
-        return root;
+    public IFunction getRootFunction() {
+        return rootFunction;
     }
 
-    public void setRoot(Node root) {
-        this.root = root;
+    public void setRootFunction(IFunction rootFunction) {
+        this.rootFunction = rootFunction;
     }
 
     public Map<Character, Double> getParameters() {
